@@ -1,5 +1,6 @@
 mod day1;
 mod day2;
+mod day3;
 use std::path::Path;
 use std::fs;
 use std::env;
@@ -33,15 +34,15 @@ struct RunInfo {
 
 fn read_input(day: Day, run_type: RunType, part: Part) -> Option<String> {
     let day_string = day.to_string();
-    let run_type_string = match run_type {
-        RunType::Test => "_test",
-        RunType::Full => ""
-    };
     let part_string = match part {
         Part::A => "a",
         Part::B => "b"
     };
-    let filename = format!("./inputs/day{}{}{}.txt", day_string, part_string, run_type_string);
+    let run_type_string = match run_type {
+        RunType::Test => format!("{}_test", part_string),
+        RunType::Full => "".to_string()
+    };
+    let filename = format!("./inputs/day{}{}.txt", day_string, run_type_string);
     let path = Path::new(&filename);
     fs::read_to_string(path).ok()
 }
@@ -75,6 +76,8 @@ fn run_aoc(day: Day, part: Part, input: &str) {
         (1, Part::B) => day1::run_b(input),
         (2, Part::A) => day2::run_a(input),
         (2, Part::B) => day2::run_b(input),
+        (3, Part::A) => day3::run_a(input),
+        (3, Part::B) => day3::run_b(input), 
         _ => unimplemented!("not a day-part combination that i've started yet")
     }
 }
