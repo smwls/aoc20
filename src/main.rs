@@ -1,6 +1,7 @@
 mod day1;
 mod day2;
 mod day3;
+mod day4;
 use std::path::Path;
 use std::fs;
 use std::env;
@@ -78,6 +79,8 @@ fn run_aoc(day: Day, part: Part, input: &str) {
         (2, Part::B) => day2::run_b(input),
         (3, Part::A) => day3::run_a(input),
         (3, Part::B) => day3::run_b(input), 
+        (4, Part::A) => day4::run_a(input),
+        (4, Part::B) => day4::run_b(input),
         _ => unimplemented!("not a day-part combination that i've started yet")
     }
 }
