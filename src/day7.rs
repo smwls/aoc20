@@ -133,7 +133,7 @@ fn parse_input(input: &str) -> Option<BagGraph> {
 pub fn run_a(input: &str) {
     let mut graph = parse_input(input).unwrap();
     let preds = get_predecessors(&mut graph, "shiny gold".to_string());
-    println!("{:?}", preds);
+    println!("{:?}", preds.len() - 1);
 }
 
 pub fn run_b(input: &str) {
